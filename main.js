@@ -103,7 +103,7 @@ gltfLoader.load(url, (glb) => {
  scene.add(orange);
 
 
- //add flowre
+ //add flower
 let flowerObj;
 gltfLoader = new GLTFLoader();
 url = './assets/flower.glb';
@@ -216,6 +216,7 @@ const lightHelperOrange = new THREE.PointLightHelper(orangeLight)
         if(this.pickedObject.name.toLowerCase() == 'moon'){window.open("https://en.wikipedia.org/wiki/Moon")};
         if(this.pickedObject.name.toLowerCase() == 'torus'){window.open("https://en.wikipedia.org/wiki/Torus")};
         if(this.pickedObject.name.toLowerCase() == 'orange'){window.open("https://syntheticfood.tumblr.com/")};
+        if(this.pickedObject.name.toLowerCase() == 'flower'){window.open("https://concrete-rhapsody.netlify.app/")};
 
       }
     }
