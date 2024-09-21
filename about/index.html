@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="banana.png" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <div id="info_div">
+      <div id = "close_div"><p class="closeX" id="returnToMainPage">⬅</p></div>
+      <div class="text_div">
+        <h2> WELCOME TO THE COSMIC GARAGE</h2>
+        <h3> A garage in a house. The house in a garage.</h3>
+        <p> In my garage there is a bit of everything. My old books, my old games. My bycicle.</p>
+        <p> Things that I collect and then forget. My skis. Broken things. Random things.</p>
+        <p> My camping stuff. Cardboard boxes. Plastic boxes. Funny stuff. Empty boxes.</p>
+        <p>The Christmas tree. Boring old things. Tools. A box that contains the tools.</p>
+        <p>Stuff.</p>
+        <p>The garage is the home of all the things that I don't need.</p>
+        <p>I use them when I have a new idea.</p>
+        <p>I use them when I leave for a new adventure.</p>
+        <p> These objects are cosmic.</p>
+        <p> It is not tidy. It is not well-organized.</p>
+        <p> But it is harmonius. </p>
+        <p> Things are forming constellations. </p>
+        <p> Constellations are forming a universe. </p>
+        <p> It is a garage</p>
+        <p> The most exciting room in my home.</p>
+      </div>
+  </div>
+  </body>
+  <script>
+    function returnToMainPage(){
+      window.location.replace('https://the-cosmic-garage.netlify.app/')
+    }
+    document.getElementById('returnToMainPage').ontouchend = returnToMainPage;
+    document.getElementById('returnToMainPage').onclick = returnToMainPage;
+  </script>
+</html>
