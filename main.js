@@ -62,8 +62,8 @@ Array(200).fill().forEach(addStar);
 
 
 //add moon
-const moonTexture = new THREE.TextureLoader().load('moonTexture.jpg')
-const moonNormal = new THREE.TextureLoader().load('moonNormalMap.jpg')
+const moonTexture = new THREE.TextureLoader().load('./assets/moonTexture.jpg')
+const moonNormal = new THREE.TextureLoader().load('./assets/moonNormalMap.jpg')
 const moon = new THREE.Mesh(
   new THREE.SphereGeometry(3, 32, 32),
   new THREE.MeshStandardMaterial({
@@ -82,7 +82,7 @@ scene.add(moon)
 //add orange
 let orangeObj;
 var gltfLoader = new GLTFLoader();
-var url = 'orange.glb';
+var url = './assets/orange.glb';
 gltfLoader.load(url, (glb) => {
   const object = glb.scene;
   object.scale.set(100, 100, 100);
@@ -106,7 +106,7 @@ gltfLoader.load(url, (glb) => {
  //add flowre
 let flowerObj;
 gltfLoader = new GLTFLoader();
-url = 'flower.glb';
+url = './assets/flower.glb';
 gltfLoader.load(url, (glb) => {
   const object = glb.scene;
   object.scale.set(10, 10, 10);
@@ -133,7 +133,7 @@ gltfLoader.load(url, (glb) => {
 //GENERAL SCENE - GENERAL SCENE - GENERAL SCENE - GENERAL SCENE - GENERAL SCENE - GENERAL SCENE - GENERAL SCENE - GENERAL SCENE - GENERAL SCENE - GENERAL SCENE - 
 
 //BACKGROUND TEXTURE
-const spaceTexture = new THREE.TextureLoader().load('spaceTexture.jpg')
+const spaceTexture = new THREE.TextureLoader().load('./assets/spaceTexture.jpg')
 scene.background = spaceTexture;
 scene.backgroundIntensity = 0.1;
 
