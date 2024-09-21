@@ -103,14 +103,14 @@ gltfLoader.load(url, (glb) => {
  scene.add(orange);
 
 
- //add flowre
+ //add flower
 let flowerObj;
 gltfLoader = new GLTFLoader();
 url = './assets/flower.glb';
 gltfLoader.load(url, (glb) => {
   const object = glb.scene;
   object.scale.set(10, 10, 10);
-  object.position.set(-2.5, -3, 6);
+  object.position.set(0, 0, 0);
   const group = new THREE.Group();
   group.add(object);
   group.position.set(10, -15, 0);
@@ -120,15 +120,16 @@ gltfLoader.load(url, (glb) => {
 });
 
  const flowerSphere = new THREE.SphereGeometry(4, 32, 16)
- const flowerShereMaterial = new THREE.ShadowMaterial()
- const flower = new THREE.Mesh(flowerSphere, flowerShereMaterial);
- flower.position.set(-10, 15, 0);
+ const flowerSphereMaterial = new THREE.ShadowMaterial()
+ //const flowerSphereMaterial = new THREE.MeshStandardMaterial({color: 0xffffff});
+ const flower = new THREE.Mesh(flowerSphere, flowerSphereMaterial);
+ flower.position.set(10, -16, 0);
  flower.name = 'flower';
- scene.add(orange);
+ scene.add(flower);
 
 
 
- const pickableObjects = [orange, torus, moon]
+ const pickableObjects = [orange, torus, moon, flower]
 
 //GENERAL SCENE - GENERAL SCENE - GENERAL SCENE - GENERAL SCENE - GENERAL SCENE - GENERAL SCENE - GENERAL SCENE - GENERAL SCENE - GENERAL SCENE - GENERAL SCENE - 
 
@@ -216,6 +217,7 @@ const lightHelperOrange = new THREE.PointLightHelper(orangeLight)
         if(this.pickedObject.name.toLowerCase() == 'moon'){window.open("https://en.wikipedia.org/wiki/Moon")};
         if(this.pickedObject.name.toLowerCase() == 'torus'){window.open("https://en.wikipedia.org/wiki/Torus")};
         if(this.pickedObject.name.toLowerCase() == 'orange'){window.open("https://syntheticfood.tumblr.com/")};
+        if(this.pickedObject.name.toLowerCase() == 'flower'){window.open("https://concrete-rhapsody.netlify.app/")};
 
       }
     }
