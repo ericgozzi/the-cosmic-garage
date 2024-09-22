@@ -147,6 +147,8 @@ gltfLoader.load(url, (glb) => {
   fanObj = group;
 });
 
+
+
  const fanSphere = new THREE.SphereGeometry(5, 32, 16)
  const fanSphereMaterial = new THREE.ShadowMaterial()
  //const fanSphereMaterial = new THREE.MeshStandardMaterial({color: 0xffffff});
