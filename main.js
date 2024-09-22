@@ -103,33 +103,61 @@ gltfLoader.load(url, (glb) => {
  scene.add(orange);
 
 
- //add flower
-let flowerObj;
+
+
+
+  //add concrete moon
+let concMoonObj;
 gltfLoader = new GLTFLoader();
-url = './assets/flower.glb';
+url = './assets/concrete-moon.glb';
 gltfLoader.load(url, (glb) => {
   const object = glb.scene;
-  object.scale.set(10, 10, 10);
+  object.scale.set(3.5, 3.5, 3.5);
   object.position.set(0, 0, 0);
   const group = new THREE.Group();
   group.add(object);
-  group.position.set(10, -15, 0);
-  group.name = 'flower';
+  group.position.set(15, -15, 0);
+  group.name = 'concreteMoon';
   scene.add(group);
-  flowerObj = group;
+  concMoonObj = group;
 });
 
- const flowerSphere = new THREE.SphereGeometry(4, 32, 16)
- const flowerSphereMaterial = new THREE.ShadowMaterial()
- //const flowerSphereMaterial = new THREE.MeshStandardMaterial({color: 0xffffff});
- const flower = new THREE.Mesh(flowerSphere, flowerSphereMaterial);
- flower.position.set(10, -16, 0);
- flower.name = 'flower';
- scene.add(flower);
+ const concreteMoonSphere = new THREE.SphereGeometry(5, 32, 16)
+ const concreteMoonSphereMaterial = new THREE.ShadowMaterial()
+ //const concreteMoonSphereMaterial = new THREE.MeshStandardMaterial({color: 0xffffff});
+ const concreteMoon = new THREE.Mesh(concreteMoonSphere, concreteMoonSphereMaterial);
+ concreteMoon.position.set(15, -15, 0);
+ concreteMoon.name = 'concrete';
+ scene.add(concreteMoon);
+
+
+//add fan
+let fanObj;
+gltfLoader = new GLTFLoader();
+url = './assets/fan.glb';
+gltfLoader.load(url, (glb) => {
+  const object = glb.scene;
+  object.scale.set(3,3,3);
+  object.position.set(0, 0, 0);
+  const group = new THREE.Group();
+  group.add(object);
+  group.position.set(-15, 0, 15);
+  group.name = 'fan';
+  scene.add(group);
+  fanObj = group;
+});
+
+ const fanSphere = new THREE.SphereGeometry(5, 32, 16)
+ const fanSphereMaterial = new THREE.ShadowMaterial()
+ //const fanSphereMaterial = new THREE.MeshStandardMaterial({color: 0xffffff});
+ const fan = new THREE.Mesh(fanSphere, fanSphereMaterial);
+ fan.position.set(-15, 0, 15);
+ fan.name = 'fan';
+ scene.add(fan);
 
 
 
- const pickableObjects = [orange, torus, moon, flower]
+ const pickableObjects = [orange, torus, moon, concreteMoon, fan]
 
 //GENERAL SCENE - GENERAL SCENE - GENERAL SCENE - GENERAL SCENE - GENERAL SCENE - GENERAL SCENE - GENERAL SCENE - GENERAL SCENE - GENERAL SCENE - GENERAL SCENE - 
 
@@ -161,6 +189,18 @@ const trousLight = new THREE.PointLight(0xffffff);
 trousLight.position.set(0, 0, 0)
 trousLight.power = 1000;
 scene.add(trousLight);
+
+//concrete moon light
+const concreteMoonLight = new THREE.PointLight(0xffffff);
+concreteMoonLight.position.set(23, -15, 0)
+concreteMoonLight.power = 1000;
+scene.add(concreteMoonLight);
+
+//fan light
+const fanLight = new THREE.PointLight(0xffffff);
+fanLight.position.set(-15, 0, 23)
+fanLight.power = 3000;
+scene.add(fanLight);
 
 
 
@@ -217,7 +257,8 @@ const lightHelperOrange = new THREE.PointLightHelper(orangeLight)
         if(this.pickedObject.name.toLowerCase() == 'moon'){window.open("https://en.wikipedia.org/wiki/Moon")};
         if(this.pickedObject.name.toLowerCase() == 'torus'){window.open("https://en.wikipedia.org/wiki/Torus")};
         if(this.pickedObject.name.toLowerCase() == 'orange'){window.open("https://syntheticfood.tumblr.com/")};
-        if(this.pickedObject.name.toLowerCase() == 'flower'){window.open("https://concrete-rhapsody.netlify.app/")};
+        if(this.pickedObject.name.toLowerCase() == 'concrete'){window.open("https://concrete-rhapsody.netlify.app/")};
+        if(this.pickedObject.name.toLowerCase() == 'fan'){window.open("https://concrete-rhapsody.netlify.app/")};
 
       }
     }
@@ -326,6 +367,18 @@ const lightHelperOrange = new THREE.PointLightHelper(orangeLight)
     orangeObj.rotation.x += 0.005;
     orangeObj.rotation.y += 0.004;
     orangeObj.rotation.z += 0.003;
+    }catch{}
+
+    try{
+      concMoonObj.rotation.x += 0.000;
+      concMoonObj.rotation.y += 0.01;
+      concMoonObj.rotation.z += 0.000;
+    }catch{}
+
+    try{
+      fanObj.rotation.x += 0.000;
+      fanObj.rotation.y += 0.00;
+      fanObj.rotation.z += 0.05;
     }catch{}
     
    
