@@ -260,7 +260,7 @@ const lightHelperOrange = new THREE.PointLightHelper(orangeLight)
         if(this.pickedObject.name.toLowerCase() == 'torus'){window.open("https://en.wikipedia.org/wiki/Torus")};
         if(this.pickedObject.name.toLowerCase() == 'orange'){window.open("https://syntheticfood.tumblr.com/")};
         if(this.pickedObject.name.toLowerCase() == 'concrete'){window.open("https://concrete-rhapsody.netlify.app/")};
-        if(this.pickedObject.name.toLowerCase() == 'fan'){window.open("https://concrete-rhapsody.netlify.app/")};
+        if(this.pickedObject.name.toLowerCase() == 'fan'){window.open("https://logic-of-construction.netlify.app/")};
 
       }
     }
