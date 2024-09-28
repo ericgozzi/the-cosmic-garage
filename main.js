@@ -1,7 +1,7 @@
 import './style.css'
 
 import * as THREE from 'three'
-import { FontLoader, OrbitControls, ThreeMFLoader } from 'three/examples/jsm/Addons.js'; 
+import { FontLoader, OrbitControls, Projector, ThreeMFLoader } from 'three/examples/jsm/Addons.js'; 
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 
 const canvas = document.querySelector('#bg')
@@ -39,26 +39,41 @@ controls.enabled = false;
 
 //OBJECTS - OBJECTS - OBJECTS - OBJECTS - OBJECTS - OBJECTS - OBJECTS - OBJECTS - OBJECTS - OBJECTS - OBJECTS - OBJECTS - OBJECTS - OBJECTS - OBJECTS - OBJECTS - 
 //define geometry
-const geometry = new THREE.TorusGeometry(10, 3, 16, 100)
 //define material
-const material = new THREE.MeshStandardMaterial({color: 0x44646e});
 //create mesh with geometry and material
-const torus = new THREE.Mesh(geometry, material);
-torus.name = 'torus';
 //add to mesh to the scene
-scene.add(torus)
 
 //add stars
 const numberOfStars = 200;
 function addStar(){
   const geometry = new THREE.SphereGeometry(0.25, 24, 24);
-  const material = new THREE.MeshStandardMaterial({color: 0xffffff});
+  const material = new THREE.MeshStandardMaterial({
+    color: 0xffffff,
+    emissive: new THREE.Color(1, 0.8, 0.5),
+    emissiveIntensity: 10,
+  });
   const star = new THREE.Mesh(geometry, material);
-  const [x, y, z] = Array(3).fill().map(()=>THREE.MathUtils.randFloatSpread(100));
+  var x = THREE.MathUtils.randFloatSpread(300)
+  var y = THREE.MathUtils.randFloatSpread(300)
+  var z = THREE.MathUtils.randFloatSpread(300)
   star.position.set(x, y, z);
   scene.add(star); 
 }
 Array(200).fill().forEach(addStar);
+
+
+//add sun
+const sunTexture = new THREE.TextureLoader().load('./assets/sun.jpg')
+const sun = new THREE.Mesh(
+  new THREE.SphereGeometry(6, 32, 32),
+  new THREE.MeshStandardMaterial({
+    map: sunTexture,
+    emissive: new THREE.Color(1, 0.8, 0.2),
+    emissiveMap: sunTexture,
+  })
+);
+sun.name = 'sun'
+scene.add(sun)
 
 
 //add moon
@@ -89,7 +104,7 @@ gltfLoader.load(url, (glb) => {
   object.position.set(-2.5, -3, 6);
   const group = new THREE.Group();
   group.add(object);
-  group.position.set(-10, 15, 0);
+  group.position.set(-5, 10, -15);
   group.name = 'orange';
   scene.add(group);
   orangeObj = group;
@@ -97,8 +112,10 @@ gltfLoader.load(url, (glb) => {
 
  const orangeSphere = new THREE.SphereGeometry(4, 32, 16)
  const orangeSphereMaterial = new THREE.ShadowMaterial()
+ //const orangeSphereMaterial = new THREE.MeshStandardMaterial({color: 0xffffff});
+
  const orange = new THREE.Mesh(orangeSphere, orangeSphereMaterial);
- orange.position.set(-10, 15, 0);
+ orange.position.set(-5, 10, -15);
  orange.name = 'orange';
  scene.add(orange);
 
@@ -159,7 +176,7 @@ gltfLoader.load(url, (glb) => {
 
 
 
- const pickableObjects = [orange, torus, moon, concreteMoon, fan]
+ const pickableObjects = [orange, moon, concreteMoon, fan, sun]
 
 //GENERAL SCENE - GENERAL SCENE - GENERAL SCENE - GENERAL SCENE - GENERAL SCENE - GENERAL SCENE - GENERAL SCENE - GENERAL SCENE - GENERAL SCENE - GENERAL SCENE - 
 
@@ -239,6 +256,24 @@ const lightHelperOrange = new THREE.PointLightHelper(orangeLight)
       const intersectedObjects = this.raycaster.intersectObjects(pickableObjects);
       if(intersectedObjects.length){
         document.documentElement.style.cursor = 'pointer';
+        const obj = intersectedObjects[0]
+        const divElement = document.getElementById(obj.object.name)
+        divElement.style.display = "block"
+
+        var pos = obj.object.position.clone();
+        pos.project(camera);
+        pos.x = (pos.x * window.innerWidth/2) + window.innerWidth/2;
+        pos.y = -(pos.y * window.innerHeight/2) + window.innerHeight/2;
+
+
+        divElement.style.top = pos.y + "px"
+        divElement.style.left = pos.x + "px"
+
+      }else{
+        const elements  = document.getElementsByClassName("labelPlanet")
+        for(var i = 0; i<elements.length; i++){
+          elements[i].style.display = "none"
+        }
       }
     }
 
@@ -257,7 +292,7 @@ const lightHelperOrange = new THREE.PointLightHelper(orangeLight)
         this.pickedObject = intersectedObjects[0].object;
         //HYPERLINKS
         if(this.pickedObject.name.toLowerCase() == 'moon'){window.open("https://en.wikipedia.org/wiki/Moon")};
-        if(this.pickedObject.name.toLowerCase() == 'torus'){window.open("https://en.wikipedia.org/wiki/Torus")};
+        if(this.pickedObject.name.toLowerCase() == 'sun'){window.open("https://en.wikipedia.org/wiki/Sun")};
         if(this.pickedObject.name.toLowerCase() == 'orange'){window.open("https://syntheticfood.tumblr.com/")};
         if(this.pickedObject.name.toLowerCase() == 'concrete'){window.open("https://concrete-rhapsody.netlify.app/")};
         if(this.pickedObject.name.toLowerCase() == 'fan'){window.open("https://smorgasbordic-factory.netlify.app/")};
@@ -334,11 +369,7 @@ const lightHelperOrange = new THREE.PointLightHelper(orangeLight)
   window.addEventListener( 'resize', onWindowResize );
 
 
- 
-
-
-
-// RENDER FUNCTION RENDER FUNCTION RENDER FUNCTIONRENDER FUNCTIONRENDER FUNCTION
+ // RENDER FUNCTION RENDER FUNCTION RENDER FUNCTIONRENDER FUNCTIONRENDER FUNCTION
 
   const pickHelper = new PickHelper();
   let theta = 0;
@@ -359,9 +390,6 @@ const lightHelperOrange = new THREE.PointLightHelper(orangeLight)
 
     //animations scripts
 
-    torus.rotation.x += 0.01;
-    torus.rotation.y += 0.005;
-    torus.rotation.z += 0.01
 
     moon.rotation.y += 0.005;
 
