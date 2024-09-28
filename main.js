@@ -164,8 +164,6 @@ gltfLoader.load(url, (glb) => {
   fanObj = group;
 });
 
-
-
  const fanSphere = new THREE.SphereGeometry(5, 32, 16)
  const fanSphereMaterial = new THREE.ShadowMaterial()
  //const fanSphereMaterial = new THREE.MeshStandardMaterial({color: 0xffffff});
@@ -175,8 +173,36 @@ gltfLoader.load(url, (glb) => {
  scene.add(fan);
 
 
+ //add spacecraft
+let spacecraftObj;
+gltfLoader = new GLTFLoader();
+url = './assets/spacecraft.glb';
+gltfLoader.load(url, (glb) => {
+  const object = glb.scene;
+  object.scale.set(0.5,0.5,0.5);
+  object.rotateY(THREE.MathUtils.degToRad(-30));
+  object.position.set(0, 0, 0);
+  const group = new THREE.Group();
+  group.add(object);
+  group.position.set(20, 0, 10);
+  group.name = 'spacecraft';
+  scene.add(group);
+  spacecraftObj = group;
+});
 
- const pickableObjects = [orange, moon, concreteMoon, fan, sun]
+ const spacecraftCube = new THREE.BoxGeometry(2.5, 2.5, 7.5)
+ spacecraftCube.rotateZ(THREE.MathUtils.degToRad(45));
+ spacecraftCube.rotateY(THREE.MathUtils.degToRad(-30));
+ const spacecraftMaterial = new THREE.ShadowMaterial()
+ //const spacecraftMaterial = new THREE.MeshStandardMaterial({color: 0xffffff});
+ const spacecraft = new THREE.Mesh(spacecraftCube, spacecraftMaterial);
+ spacecraft.position.set(20, 0, 10);
+ spacecraft.name = 'spacecraft';
+ scene.add(spacecraft);
+
+
+
+ const pickableObjects = [orange, moon, concreteMoon, fan, sun, spacecraft]
 
 //GENERAL SCENE - GENERAL SCENE - GENERAL SCENE - GENERAL SCENE - GENERAL SCENE - GENERAL SCENE - GENERAL SCENE - GENERAL SCENE - GENERAL SCENE - GENERAL SCENE - 
 
@@ -220,6 +246,14 @@ const fanLight = new THREE.PointLight(0xffffff);
 fanLight.position.set(-15, 0, 23)
 fanLight.power = 3000;
 scene.add(fanLight);
+
+//spacecraft light
+const spacecraftLigth = new THREE.PointLight(0xffffff);
+fanLight.position.set(10, 10, 0)
+fanLight.power = 3000;
+scene.add(spacecraftLigth);
+
+
 
 
 
@@ -296,6 +330,7 @@ const lightHelperOrange = new THREE.PointLightHelper(orangeLight)
         if(this.pickedObject.name.toLowerCase() == 'orange'){window.open("https://syntheticfood.tumblr.com/")};
         if(this.pickedObject.name.toLowerCase() == 'concrete'){window.open("https://concrete-rhapsody.netlify.app/")};
         if(this.pickedObject.name.toLowerCase() == 'fan'){window.open("https://smorgasbordic-factory.netlify.app/")};
+        if(this.pickedObject.name.toLowerCase() == 'spacecraft'){window.open("https://www.nonarchitecture.eu/2021/12/04/destination-hell/")};
 
       }
     }
@@ -409,6 +444,12 @@ const lightHelperOrange = new THREE.PointLightHelper(orangeLight)
       fanObj.rotation.x += 0.000;
       fanObj.rotation.y += 0.00;
       fanObj.rotation.z += 0.05;
+    }catch{}
+
+    try{
+
+      spacecraftObj.rotation.z += 0.004;
+      spacecraft.rotation.z += 0.004
     }catch{}
     
    
