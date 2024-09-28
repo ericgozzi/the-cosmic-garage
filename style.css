@@ -170,4 +170,20 @@ div.title{
 }
   
 
+div.labelPlanet{
+  position: fixed; 
+  display: none;
+  text-align: center;
+  margin: 0px;
+  padding: 0px;
+  width: 20%;
+}
+
+p.labelPlanetText{
+  text-align: center;
+  margin: 0px;
+  padding: 0px;
+}
+
+
 

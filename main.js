@@ -1,7 +1,7 @@
 import './style.css'
 
 import * as THREE from 'three'
-import { FontLoader, OrbitControls, ThreeMFLoader } from 'three/examples/jsm/Addons.js'; 
+import { FontLoader, OrbitControls, Projector, ThreeMFLoader } from 'three/examples/jsm/Addons.js'; 
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 
 const canvas = document.querySelector('#bg')
@@ -112,8 +112,10 @@ gltfLoader.load(url, (glb) => {
 
  const orangeSphere = new THREE.SphereGeometry(4, 32, 16)
  const orangeSphereMaterial = new THREE.ShadowMaterial()
+ //const orangeSphereMaterial = new THREE.MeshStandardMaterial({color: 0xffffff});
+
  const orange = new THREE.Mesh(orangeSphere, orangeSphereMaterial);
- orange.position.set(-10, 15, 0);
+ orange.position.set(-5, 10, -15);
  orange.name = 'orange';
  scene.add(orange);
 
@@ -254,6 +256,24 @@ const lightHelperOrange = new THREE.PointLightHelper(orangeLight)
       const intersectedObjects = this.raycaster.intersectObjects(pickableObjects);
       if(intersectedObjects.length){
         document.documentElement.style.cursor = 'pointer';
+        const obj = intersectedObjects[0]
+        const divElement = document.getElementById(obj.object.name)
+        divElement.style.display = "block"
+
+        var pos = obj.object.position.clone();
+        pos.project(camera);
+        pos.x = (pos.x * window.innerWidth/2) + window.innerWidth/2;
+        pos.y = -(pos.y * window.innerHeight/2) + window.innerHeight/2;
+
+
+        divElement.style.top = pos.y + "px"
+        divElement.style.left = pos.x + "px"
+
+      }else{
+        const elements  = document.getElementsByClassName("labelPlanet")
+        for(var i = 0; i<elements.length; i++){
+          elements[i].style.display = "none"
+        }
       }
     }
 
