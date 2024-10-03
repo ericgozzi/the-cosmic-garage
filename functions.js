@@ -40,19 +40,19 @@ function openInstagram(){
 
 
 
-document.getElementById('cosmicgarage').onclick = makeTextAppear;
-document.getElementById('cosmicgarage').ontouchend = makeTextAppear;
+//document.getElementById('cosmicgarage').onclick = makeTextAppear;
+//document.getElementById('cosmicgarage').ontouchend = makeTextAppear;
 
-document.getElementById('close_div_info').onclick = makeTextDisapper;
-document.getElementById('close_div_info').ontouchend = makeTextDisapper;
+//document.getElementById('close_div_info').onclick = makeTextDisapper;
+//document.getElementById('close_div_info').ontouchend = makeTextDisapper;
 
-document.getElementById('listOfThings').onclick = goToList;
-document.getElementById('listOfThings').ontouchend = goToList
+//document.getElementById('listOfThings').onclick = goToList;
+//document.getElementById('listOfThings').ontouchend = goToList
 
-document.getElementById('close_div_list').onclick = goToList;
-document.getElementById('close_div_list').ontouchend = goToList
+//document.getElementById('close_div_list').onclick = goToList;
+//document.getElementById('close_div_list').ontouchend = goToList
 
-document.getElementById('instagram').onclick = openInstagram;
-document.getElementById('instagram').ontouchend = openInstagram;
+//document.getElementById('instagram').onclick = openInstagram;
+//document.getElementById('instagram').ontouchend = openInstagram;
 
 

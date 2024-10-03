@@ -17,20 +17,30 @@
 
     <main>
       
-      <div id="title"><h1> THE COSMIC GARAGE </h1></div>
+      <!-- TITLE -->
+
+      <div id="title">
+        <h1> THE COSMIC GARAGE </h1>
+      </div>
       
-     
-        <ul> 
-          <li class="menu" id="cosmicgarage">?</li>
-          <li class="menu" id="listOfThings">L</li>
-          <li class="menu" id="instagram">I</li>
-        </ul>
+      <!-- MENU -->
+
+     <div id="menu">
+      <ul> 
+        <li class="menu" id="cosmicgarage" onclick="openAbout()">?</li>
+        <li class="menu" id="listOfThings" onclick="openList()">L</li>
+        <li class="menu" id="instagram">I</li>
+      </ul>
+    </div>
    
       
 
-    
-      <div id="info_div">
-        <div class = "close_div" id = "close_div_info"><p class="closeX">X</p></div>
+      <!-- ABOUT -->
+      
+      <section id="about" style="display: none;">
+        <div class = "button close" id ="close-about-button" onclick="openAbout()">
+          <p class="closeX">X</p>
+        </div>
         <div class="text_div">
           <h2> WELCOME TO THE COSMIC GARAGE</h2>
           <h3> A garage in a house. The house in a garage.</h3>
@@ -51,93 +61,95 @@
           <p> The most exciting room in my home.</p>
           <h3> >> Click on orbiting objects to discover more</h3>
         </div>
-    </div>
+      </section>
 
-    <div id="listOfThingsSection" style="display: none;">
-      <div  class = "close_div" id="close_div_list"><p class="closeX" onclick="goToList()">X</p></div>
-      <ul class="garage-list">
+      <!-- LIST OF THINGS -->
 
-        <li> boxes </li>
-        <li> bycicle</li>
-        <li> skis </li>
-        <li> hammer </li>
-        <li> screwdriver </li>
-        <li> old toys </li>
-        <li> old books </li>
-        <li> ropes </li>
-        <li> screws </li>
-        <li> angle grinder </li>
-        <li> persian carpet </li>
-        <li> light fixtures </li>
-        <li> bulps </li>
-        <li> a box that contains the tools </li>
-        <li> skis shoes</li>
-        <li> snowboard </li>
-        <li> ugly posters </li>
-        <li> random pieces of wood </li>
-        <li> ranodm pieces of metal</li>
-        <li> a camping tent </li>
-        <li> mountain shoes</li>
-        <li> driller </li>
-        <li> skateboard </li>
-        <li> snowboard </li>
-        <li> neons </li>
-        <li> old ornaments </li>
-        <li> an old Macintosh computer </li>
-        <li> vases </li>
-        <li> dryed paint </li>
-        <li> empty boxes </li>
-        <li> fresbee </li>
-        <li> volley ball</li>
-        <li> nails </li>
-        <li> bolts </li>
-        <li> table </li>
-        <li> workbench </li>
-        <li> a collection of wine bottle corks</li>
-        <li> a collection of post stamps</li>
-        <li> suitcases </li>
-        <li> a canoe</li>
-        <li> climbing gear </li>
-        <li> void bottles </li>
-        <li> saw </li>
-        <li> tape </li>
-        <li> old pan</li>
-        <li> christmas tree</li>
-        <li> christmas ornaments</li>
-        <li> carnival costumes</li>
-        <li> pipes </li>
-        <li> table games </li>
-        <li> model train </li>
-        <li> legos </li>
+      <section id="listOfThingsSection" style="display: none;">
+      <div  class = "button close" id="close_div_list"><p class="closeX" onclick="openList()">X</p></div>
+         <h3> LIST OF THINGS IN MY GARAGE</h2>
+          <ul class="garage-list">
+            <li> boxes </li>
+            <li> bycicle</li>
+            <li> skis </li>
+            <li> hammer </li>
+            <li> screwdriver </li>
+            <li> old toys </li>
+            <li> old books </li>
+            <li> ropes </li>
+            <li> screws </li>
+            <li> angle grinder </li>
+            <li> persian carpet </li>
+            <li> light fixtures </li>
+            <li> bulps </li>
+            <li> a box that contains the tools </li>
+            <li> skis shoes</li>
+            <li> snowboard </li>
+            <li> ugly posters </li>
+            <li> random pieces of wood </li>
+            <li> ranodm pieces of metal</li>
+            <li> a camping tent </li>
+            <li> mountain shoes</li>
+            <li> driller </li>
+            <li> skateboard </li>
+            <li> snowboard </li>
+            <li> neons </li>
+            <li> old ornaments </li>
+            <li> an old Macintosh computer </li>
+            <li> vases </li>
+            <li> dryed paint </li>
+            <li> empty boxes </li>
+            <li> fresbee </li>
+            <li> volley ball</li>
+            <li> nails </li>
+            <li> bolts </li>
+            <li> table </li>
+            <li> workbench </li>
+            <li> a collection of wine bottle corks</li>
+            <li> a collection of post stamps</li>
+            <li> suitcases </li>
+            <li> a canoe</li>
+            <li> climbing gear </li>
+            <li> void bottles </li>
+            <li> saw </li>
+            <li> tape </li>
+            <li> old pan</li>
+            <li> christmas tree</li>
+            <li> christmas ornaments</li>
+            <li> carnival costumes</li>
+            <li> pipes </li>
+            <li> table games </li>
+            <li> model train </li>
+            <li> legos </li>
+          </ul>
+      </section>
 
 
-        </ul>
+      <!-- 3D MODELS LABELS -->
+      
+      <div class="labelPlanet" id="moon">
+        <p class="labelPlanetText" id="moonText"> the moon </p>
       </div>
 
+      <div class="labelPlanet" id="sun">
+        <p class="labelPlanetText" id="sunText"> the sun </p>
+      </div>
 
-    <div class="labelPlanet" id="moon">
-      <p class="labelPlanetText" id="moonText"> the moon </p>
-    </div>
+      <div class="labelPlanet" id="fan">
+        <p class="labelPlanetText" id="fanText"> the factory</p>
+      </div>
 
-    <div class="labelPlanet" id="sun">
-      <p class="labelPlanetText" id="sunText"> the sun </p>
-    </div>
+      <div class="labelPlanet" id="concrete">
+        <p class="labelPlanetText" id="concreteText"> concrete rhapsody</p>
+      </div>
 
-    <div class="labelPlanet" id="fan">
-      <p class="labelPlanetText" id="fanText"> the factory</p>
-    </div>
+      <div class="labelPlanet" id="orange">
+        <p class="labelPlanetText" id="orangeText"> cocooned ambrosia</p>
+      </div>
 
-    <div class="labelPlanet" id="concrete">
-      <p class="labelPlanetText" id="concreteText"> concrete rhapsody</p>
-    </div>
-
-    <div class="labelPlanet" id="orange">
-      <p class="labelPlanetText" id="orangeText"> cocooned ambrosia</p>
-    </div>
-
-    <div class="labelPlanet" id="spacecraft">
-      <p class="labelPlanetText" id="spacecraft"> destination hell</p>
-    </div>
+      <div class="labelPlanet" id="spacecraft">
+        <p class="labelPlanetText" id="spacecraft"> destination hell</p>
+      </div>
 
 
 
@@ -147,5 +159,23 @@
      
     <script type="module" src="/main.js"></script>
     <script type="module" src="/functions.js"></script>
+    <script>
+      function openAbout(){
+        about = document.getElementById("about")
+        if(about.style.display == "none"){
+          about.style.display = "block"
+        }else{
+          about.style.display = "none"
+        }
+      }
+      function openList(){
+        const listOfThnigsSection = document.getElementById("listOfThingsSection");
+        if(listOfThnigsSection.style.display === "none"){
+            listOfThnigsSection.style.display = "block"
+        }else{
+            listOfThnigsSection.style.display = "none";
+        }
+      }
+    </script>
   </body>
 </html>

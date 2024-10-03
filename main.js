@@ -462,3 +462,4 @@ const lightHelperOrange = new THREE.PointLightHelper(orangeLight)
     renderer.render(scene, camera);
   }
 render();
+
