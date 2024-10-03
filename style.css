@@ -151,6 +151,9 @@ section#about{
   overflow-y: scroll;
   backdrop-filter: blur(5px);
   top: 20vh;
+  scrollbar-width: thin;
+  scrollbar-color: white rgba(0, 0, 0, 0);
+  scrollbar-arrow-color: rgba(0, 0, 0, 0);
 }
 
 div.text_div{
@@ -162,8 +165,6 @@ div.text_div{
   padding-left: 2%;
   padding-right: 2%;
 }
-
-
 
 
 /* PLANET LABELS */  
@@ -195,6 +196,8 @@ section#listOfThingsSection{
   right: 0vw;
   z-index: 100;
   backdrop-filter: blur(5px);
+  scrollbar-width: thin;
+  scrollbar-color: white rgba(0, 0, 0, 0);
 }
 
 .garage-list {
@@ -213,3 +216,25 @@ section#listOfThingsSection{
 }
 
 
+/* ANIMATED INFO */
+div#animated-info{
+  position: fixed;
+  width: 70vw;
+  height: 10vh;
+  top: 25vh;
+  left: 15vw;
+  opacity: 0;
+  animation: fadeOut 7s;
+}
+
+@keyframes fadeOut{
+  0%{
+    opacity: 1;
+  }
+  80%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
+  }
+}
