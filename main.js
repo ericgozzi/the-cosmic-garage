@@ -245,24 +245,29 @@ scene.add(concreteMoonLight);
 
 //fan light
 const fanLight = new THREE.PointLight(0xffffff);
-fanLight.position.set(-15, 0, 23)
-fanLight.power = 3000;
+fanLight.position.set(-15, 0, 20)
+fanLight.power = 5000;
 scene.add(fanLight);
 
 //spacecraft light
 const spacecraftLigth = new THREE.PointLight(0xffffff);
-fanLight.position.set(10, 10, 0)
-fanLight.power = 3000;
+spacecraftLigth.position.set(20, 0,20)
+spacecraftLigth.power = 1500;
 scene.add(spacecraftLigth);
+
+const spacecraftLigth2 = new THREE.PointLight(0xffffff);
+spacecraftLigth2.position.set(20, 0, 0)
+spacecraftLigth2.power = 1500;
+scene.add(spacecraftLigth2);
 
 
 
 
 
 //light helpers
-const lightHelperMoon = new THREE.PointLightHelper(moonLight)
-const lightHelperOrange = new THREE.PointLightHelper(orangeLight)
-//scene.add(lightHelperMoon, lightHelperOrange)
+const lightHelper1 = new THREE.PointLightHelper(fanLight)
+const lightHelper2 = new THREE.PointLightHelper(spacecraftLigth2)
+//scene.add(lightHelper1, lightHelper2);
 
 
 //GRID HELPER
