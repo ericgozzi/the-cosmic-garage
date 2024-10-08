@@ -207,7 +207,9 @@ gltfLoader.load(url, (glb) => {
 //GENERAL SCENE - GENERAL SCENE - GENERAL SCENE - GENERAL SCENE - GENERAL SCENE - GENERAL SCENE - GENERAL SCENE - GENERAL SCENE - GENERAL SCENE - GENERAL SCENE - 
 
 //BACKGROUND TEXTURE
-const spaceTexture = new THREE.TextureLoader().load('./assets/spaceTexture.jpg')
+const video = document.getElementById("video-background")
+video.play()
+const spaceTexture = new THREE.VideoTexture(video)
 scene.background = spaceTexture;
 scene.backgroundIntensity = 0.1;
 
