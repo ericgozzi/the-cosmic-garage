@@ -467,3 +467,4 @@ const lightHelper2 = new THREE.PointLightHelper(spacecraftLigth2)
     renderer.render(scene, camera);
   }
 render();
+
