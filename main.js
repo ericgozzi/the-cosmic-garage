@@ -32,7 +32,7 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 
 // orbit contorls
 const controls = new OrbitControls(camera, renderer.domElement);
-controls.enabled = false;
+controls.enabled = true;
 
 
 
@@ -427,8 +427,8 @@ const lightHelper2 = new THREE.PointLightHelper(spacecraftLigth2)
 
     //camera.position.z = radius * Math.cos( THREE.MathUtils.degToRad( theta ) );
     //camera.lookAt( scene.position );
-    boom.rotation.y += 0.003;
-    camera.updateMatrixWorld();
+    //boom.rotation.y += 0.003;
+    //camera.updateMatrixWorld();
 
     //animations scripts
 
